@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <title>linhaihai page</title>
   <!-- import CSS -->
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 </head>
@@ -12,10 +13,11 @@
 	  <el-col :span="14" :offset="5" >
 		<el-tabs v-model="activeName" type="card" >
 			<el-tab-pane label="常用书签" name="first">
-				<el-tag type="success" @click="goUrl('www.baidu.com')">百度</el-tag>
-				<el-tag type="info" @click="goUrl('www.bilibili.com')">B站</el-tag>
-				<el-tag type="warning" @click="goUrl('www.toutiao.com')">头条</el-tag>
-				<el-tag type="danger" @click="goUrl('www.processon.com')">processon</el-tag>
+				<el-tag class="pointer" type="success" @click="goUrl('www.baidu.com')">百度</el-tag>
+				<el-tag class="pointer" type="info" @click="goUrl('www.bilibili.com')">B站</el-tag>
+				<el-tag class="pointer" type="warning" @click="goUrl('www.toutiao.com')">头条</el-tag>
+				<el-tag class="pointer" type="danger" @click="goUrl('www.processon.com')">processon</el-tag>
+				<el-tag class="pointer" type="success" @click="goUrl('www.github.com')">github</el-tag>
 			</el-tab-pane>
 			<el-tab-pane label="个人主页" name="second">个人主页</el-tab-pane>
 			<el-tab-pane label="其他" name="third">
@@ -49,4 +51,11 @@
 	  },
     })
   </script>
+  <style>
+  
+	.pointer{
+		cursor:pointer;
+	}
+  </style>
+  
 </html>
