@@ -14,16 +14,11 @@
 		<el-tabs v-model="activeName" type="card" >
 			<el-tab-pane label="常用书签" name="first">
 				<el-divider content-position="left">常用</el-divider>
-				<el-tag class="pointer" type="success" @click="goUrl('www.baidu.com')">百度</el-tag>
-				<el-tag class="pointer" type="info" @click="goUrl('www.bilibili.com')">B站</el-tag>
-				<el-tag class="pointer" type="warning" @click="goUrl('www.toutiao.com')">头条</el-tag>
-				<el-tag class="pointer" type="danger" @click="goUrl('www.processon.com')">processon</el-tag>
-				<el-tag class="pointer" type="success" @click="goUrl('www.github.com')">github</el-tag>
+        <el-tag v-for="(item,index) in tagDataList1" class="pointer" :key="item.name"  :type="tagTypeList[index%4]" @click="goUrl(item.url)">{{item.name}}</el-tag>
 				<el-divider content-position="left">算法</el-divider>
-				<el-tag class="pointer" type="success" @click="goUrl('www.cs.usfca.edu/~galles/visualization/Algorithms.html')">数据结构动画</el-tag>
+				<el-tag v-for="(item,index) in tagDataList2" class="pointer" :key="item.name"  :type="tagTypeList[index%4]" @click="goUrl(item.url)">{{item.name}}</el-tag>
 				<el-divider content-position="left">API</el-divider>
-				<el-tag class="pointer" type="success" @click="goUrl('www.apiref.com')">常用API</el-tag>
-				<el-tag class="pointer" type="success" @click="goUrl('www.apiref.com/java11-zh/index.html')">JAVA11</el-tag>
+				<el-tag v-for="(item,index) in tagDataList3" class="pointer" :key="item.name"  :type="tagTypeList[index%4]" @click="goUrl(item.url)">{{item.name}}</el-tag>
 			</el-tab-pane>
 			<el-tab-pane label="个人主页" name="second">
 				<a href="https://linhaihai.github.io/">https://linhaihai.github.io/</a>
@@ -47,22 +42,40 @@
     new Vue({
       el: '#app',
       data: function() {
-        return { 
-			visible: false ,
-			activeName : "first",
-		}
+        return {
+          visible: false ,
+          activeName : "first",
+          tagTypeList:["success","info","warning","danger"],
+          tagDataList1:[
+            {name:"百度",url:"www.baidu.com"},
+            {name:"B站",url:"www.bilibili.com"},
+            {name:"头条",url:"www.toutiao.com"},
+            {name:"processon",url:"www.processon.com"},
+            {name:"github",url:"www.github.com"},
+            {name:"maven仓库",url:"https://mvnrepository.com"}
+            
+          ],
+          tagDataList2:[
+            {name:"数据结构动画",url:"www.cs.usfca.edu/~galles/visualization/Algorithms.html"}
+          ],
+          tagDataList3:[
+            {name:"常用API",url:"www.apiref.com"},
+            {name:"JAVA11",url:"www.apiref.com/java11-zh/index.html"}
+          ]
+        }
       },
-	  methods:{
-		goUrl(url){
-			window.open("http://"+url)
-		}
-	  },
+      methods:{
+        goUrl(url){
+          window.open("http://"+url)
+        }
+      },
     })
   </script>
   <style>
   
 	.pointer{
 		cursor:pointer;
+    margin-left:10px;
 	}
   </style>
   
